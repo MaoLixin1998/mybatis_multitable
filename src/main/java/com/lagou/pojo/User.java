@@ -1,5 +1,6 @@
 package com.lagou.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,11 @@ public class User {
     private String username;
 
     //该用户所具有的订单信息
-    private List<Order> orderList;
+    private List<Order> orderList = new ArrayList<>();
+
+
+    //该用户所具有的订单信息
+    private List<Role> roleList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -41,12 +46,20 @@ public class User {
         this.orderList = orderList;
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", orderList=" + orderList +
+                ", roleList=" + roleList +
                 '}';
     }
 }

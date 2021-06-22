@@ -20,8 +20,26 @@
             o.total,
             o.uid
         FROM
-            user u
+            `user` u
             LEFT JOIN orders o ON u.id = o.uid
 
+    </select>
+
+    <resultMap id="UserRoleMap" type="com.lagou.pojo.User">
+        <id property="id" column="userid"></id>
+        <result property="username" column="username"></result>
+
+        <collection property="roleList" ofType="com.lagou.pojo.Role">
+            <id property="id" column="roleid"></id>
+            <result property="roleName" column="roleName"></result>
+            <result property="roleDesc" column="roleDesc"></result>
+        </collection>
+    </resultMap>
+    <select id="findUserAndRole" resultMap="UserRoleMap">
+        SELECT *
+        FROM
+        `user` u
+            LEFT JOIN sys_user_role ur ON u.id = ur.userid
+            LEFT JOIN sys_role r ON r.id = ur.roleid
     </select>
 </mapper>

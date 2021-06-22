@@ -57,4 +57,23 @@ public class MybatisTest {
         }
 
     }
+
+    @Test
+    public void test3() throws IOException {
+        //1.Resources工具类，配置文件的加载,把配置文件加载成字节输入流
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+
+        //2.解析了配置文件，并创建了sqlSessionFactory工厂
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        //3.生产sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();//默认开启一个事务，但事务不会自动提交
+        //4.sqlSession调用方法
+        IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);
+
+        List<User> all = mapper.findUserAndRole();
+        for (User user : all) {
+            System.out.println(user);
+        }
+
+    }
 }
