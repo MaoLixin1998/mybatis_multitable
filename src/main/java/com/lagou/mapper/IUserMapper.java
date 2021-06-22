@@ -1,6 +1,6 @@
 package com.lagou.mapper;
 
-import com.lagou.pojo.Order;
+import com.lagou.pojo.User;
 
 import java.util.List;
 
@@ -8,11 +8,9 @@ import java.util.List;
  * @ClassName IUserMapper
  * @Description TODO
  * @Author mao
- * @Data 2021/6/22 11:18
+ * @Data 2021/6/22 15:15
  **/
 public interface IUserMapper {
-
-    //查询订单的同事，还查询该订单所属用户
-    public List<Order> findOrderAndUser();
-
+    //查询所有用户信息以及用户关联的订单信息
+    public List<User> findAll();
 }
