@@ -1,4 +1,6 @@
 package com.lagou.test;
+import com.lagou.pojo.Role;
+import java.util.ArrayList;
 
 import com.lagou.mapper.IOrderMapper;
 import com.lagou.mapper.IUserMapper;
@@ -8,6 +10,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -74,6 +77,58 @@ public class MybatisTest {
         for (User user : all) {
             System.out.println(user);
         }
+
+    }
+
+    private IUserMapper userMapper;
+
+    @Before
+    public void before() throws IOException {
+        //1.Resources工具类，配置文件的加载,把配置文件加载成字节输入流
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+
+        //2.解析了配置文件，并创建了sqlSessionFactory工厂
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        //3.生产sqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);//默认开启一个事务，但事务不会自动提交
+        //4.sqlSession调用方法
+        userMapper = sqlSession.getMapper(IUserMapper.class);
+    }
+
+    @Test
+    public void addUser(){
+        User user = new User();
+        user.setId(4);
+        user.setUsername("成都市");
+        userMapper.addUser(user);
+
+    }
+
+    @Test
+    public void updateUser(){
+        User user = new User();
+        user.setId(4);
+        user.setUsername("b市");
+        userMapper.updateUser(user);
+
+    }
+
+    @Test
+    public void deleteUser(){
+//        User user = new User();
+//        user.setId(4);
+//        user.setUsername("b市");
+        userMapper.deleteUser(3);
+
+    }
+
+    @Test
+    public void selectUser(){
+//        User user = new User();
+//        user.setId(4);
+//        user.setUsername("b市");
+        List<User> users = userMapper.selectUser();
+        System.out.println(users);
 
     }
 }
