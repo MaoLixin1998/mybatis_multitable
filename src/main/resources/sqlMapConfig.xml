@@ -29,7 +29,7 @@
     </environments>
     <!--  引入映射配置文件  -->
     <mappers>
-        <mapper resource="IUserMapper.xml"/>
+        <package name="com.lagou.mapper"/>
     </mappers>
 
 
