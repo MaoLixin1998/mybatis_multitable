@@ -12,9 +12,9 @@
             <result property="username" column="username"></result>
         </association>
     </resultMap>
-    <select id="findOrderAndUser" resultMap="orderMap">
+<!--    <select id="findOrderAndUser" resultMap="orderMap">-->
 
-                 select * from orders o, user u where o.uid = u.id
+<!--                 select * from orders o, user u where o.uid = u.id-->
 
-    </select>
+<!--    </select>-->
 </mapper>

@@ -1,6 +1,4 @@
 package com.lagou.test;
-import com.lagou.pojo.Role;
-import java.util.ArrayList;
 
 import com.lagou.mapper.IOrderMapper;
 import com.lagou.mapper.IUserMapper;
@@ -81,6 +79,7 @@ public class MybatisTest {
     }
 
     private IUserMapper userMapper;
+    private IOrderMapper orderMapper;
 
     @Before
     public void before() throws IOException {
@@ -93,6 +92,7 @@ public class MybatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession(true);//默认开启一个事务，但事务不会自动提交
         //4.sqlSession调用方法
         userMapper = sqlSession.getMapper(IUserMapper.class);
+        orderMapper = sqlSession.getMapper(IOrderMapper.class);
     }
 
     @Test
@@ -129,6 +129,16 @@ public class MybatisTest {
 //        user.setUsername("b市");
         List<User> users = userMapper.selectUser();
         System.out.println(users);
+
+    }
+
+    @Test
+    public void oneToOne(){
+//        User user = new User();
+//        user.setId(4);
+//        user.setUsername("b市");
+        List<Order> orderAndUser = orderMapper.findOrderAndUser();
+        System.out.println(orderAndUser);
 
     }
 }

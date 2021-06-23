@@ -17,6 +17,7 @@ import java.util.List;
 public interface IUserMapper {
     //查询所有用户信息以及用户关联的订单信息
     public List<User> findAll();
+
     //查询所有用户信息以及用户关联的角色信息
     public List<User> findUserAndRole();
 
@@ -31,5 +32,8 @@ public interface IUserMapper {
 
     @Select("delete from `user` where id = #{id}")
     public List<User> deleteUser(Integer id);
+
+    @Select("select * from user where id = #{id}")
+    public User findUserById(Integer id);
 
 }
