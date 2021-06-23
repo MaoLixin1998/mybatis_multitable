@@ -25,6 +25,13 @@ public interface IUserMapper {
     public List<User> findAll();
 
     //查询所有用户信息以及用户关联的角色信息
+    @Select("select * from `user`")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "username", column = "username"),
+            @Result(property = "roleList", column = "id", javaType = List.class,
+                    many = @Many(select = "com.lagou.mapper.IRoleMapper.findRoleByUid"))
+    })
     public List<User> findUserAndRole();
 
     @Insert("insert into `user` values(#{id},#{username})")

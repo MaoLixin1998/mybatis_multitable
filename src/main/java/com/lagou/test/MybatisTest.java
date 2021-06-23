@@ -151,4 +151,14 @@ public class MybatisTest {
         System.out.println(all);
 
     }
+    @Test
+    public void manyToMany(){
+//        User user = new User();
+//        user.setId(4);
+//        user.setUsername("b市");
+        List<User> all = userMapper.findUserAndRole();
+        System.out.println(all);
+
+    }
+
 }

@@ -35,11 +35,11 @@
             <result property="roleDesc" column="roleDesc"></result>
         </collection>
     </resultMap>
-    <select id="findUserAndRole" resultMap="UserRoleMap">
-        SELECT *
-        FROM
-        `user` u
-            LEFT JOIN sys_user_role ur ON u.id = ur.userid
-            LEFT JOIN sys_role r ON r.id = ur.roleid
-    </select>
+<!--    <select id="findUserAndRole" resultMap="UserRoleMap">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        `user` u-->
+<!--            LEFT JOIN sys_user_role ur ON u.id = ur.userid-->
+<!--            LEFT JOIN sys_role r ON r.id = ur.roleid-->
+<!--    </select>-->
 </mapper>
