@@ -2,9 +2,7 @@ package com.lagou.mapper;
 
 import com.lagou.pojo.Role;
 import com.lagou.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,6 +14,14 @@ import java.util.List;
  **/
 public interface IUserMapper {
     //查询所有用户信息以及用户关联的订单信息
+
+    @Select("select * from `user`")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "username", column = "username"),
+            @Result(property = "orderList", column = "id", javaType = List.class,
+                    many = @Many(select = "com.lagou.mapper.IOrderMapper.findOrderByUid"))
+    })
     public List<User> findAll();
 
     //查询所有用户信息以及用户关联的角色信息

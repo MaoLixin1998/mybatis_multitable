@@ -15,6 +15,16 @@ public class User {
 
     private String username;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", orderList=" + orderList +
+                ", roleList=" + roleList +
+                '}';
+    }
+
     //该用户所具有的订单信息
     private List<Order> orderList = new ArrayList<>();
 
@@ -54,12 +64,4 @@ public class User {
         this.roleList = roleList;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", roleList=" + roleList +
-                '}';
-    }
 }

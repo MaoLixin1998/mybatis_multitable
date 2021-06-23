@@ -11,19 +11,19 @@
             <result property="total" column="total"></result>
         </collection>
     </resultMap>
-    <select id="findAll" resultMap="UserMap">
+<!--    <select id="findAll" resultMap="UserMap">-->
 
-         SELECT
-            u.*,
-            o.id oid,
-            o.orderTime,
-            o.total,
-            o.uid
-        FROM
-            `user` u
-            LEFT JOIN orders o ON u.id = o.uid
+<!--         SELECT-->
+<!--            u.*,-->
+<!--            o.id oid,-->
+<!--            o.orderTime,-->
+<!--            o.total,-->
+<!--            o.uid-->
+<!--        FROM-->
+<!--            `user` u-->
+<!--            LEFT JOIN orders o ON u.id = o.uid-->
 
-    </select>
+<!--    </select>-->
 
     <resultMap id="UserRoleMap" type="com.lagou.pojo.User">
         <id property="id" column="userid"></id>

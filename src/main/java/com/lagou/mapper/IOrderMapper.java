@@ -28,5 +28,6 @@ public interface IOrderMapper {
     @Select("select * from orders")
     public List<Order> findOrderAndUser();
 
-
+    @Select("select * from orders where uid = #{uid}")
+    public List<Order> findOrderByUid(Integer uid);
 }

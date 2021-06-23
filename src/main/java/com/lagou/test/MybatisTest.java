@@ -141,4 +141,14 @@ public class MybatisTest {
         System.out.println(orderAndUser);
 
     }
+
+    @Test
+    public void oneToMany(){
+//        User user = new User();
+//        user.setId(4);
+//        user.setUsername("b市");
+        List<User> all = userMapper.findAll();
+        System.out.println(all);
+
+    }
 }
